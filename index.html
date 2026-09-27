@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solvere — Know they're okay. Know help comes.</title>
+<meta name="description" content="Solvere keeps your mom or dad safe in their own home. No cameras, nothing to wear. It notices when something's wrong, answers your questions, and sends a real person to the door.">
+<meta property="og:title" content="Solvere — Know they're okay. Know help comes.">
+<meta property="og:description" content="Home, looked after. No cameras, nothing to wear. A real person comes when it matters.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trysolvere.com/">
+<meta name="theme-color" content="#0F2622">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0F2622; --forest: #14302B; --forest-2: #1E4139; --forest-3: #2E6B5C;
+    --cream: #F6F2EA; --paper: #FBF8F2; --sand: #ECE5D8; --line: #E4DCCD;
+    --clay: #A8492A; --clay-dark: #8F3D22; --peach: #E8A87C; --apricot: #F3C29C; --blush: #F3DCCB;
+    --ink: #23302C; --muted: #4A524E; --soft: #5A625E; --mint: #C5D3CD; --sage: #9FB3AB; --green: #7FC8A9;
+    --serif: 'Lora', Georgia, 'Times New Roman', serif;
+    --sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    --ease: cubic-bezier(.2,.7,.2,1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { font-family: var(--sans); font-size: 18px; line-height: 1.6; color: var(--ink); background: var(--cream); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.1; color: var(--forest); text-wrap: balance; }
+  h2 { font-size: clamp(32px, 5vw, 52px); letter-spacing: -.01em; }
+  h3 { font-size: 23px; line-height: 1.2; }
+  .eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--clay); }
+  .lede { font-size: clamp(18px, 2vw, 20px); color: var(--muted); }
+  section { padding: 80px 0; }
+  .head { max-width: 760px; margin-bottom: 40px; }
+  .head .eyebrow { margin-bottom: 14px; }
+
+  /* buttons */
+  .btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 14px 30px; border-radius: 999px; border: 0; cursor: pointer; background: var(--clay); color: #fff; font: 600 18px/1 var(--sans); text-decoration: none; box-shadow: 0 10px 30px -10px rgba(168,73,42,.7); transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s; }
+  .btn::after { content: ""; position: absolute; top: 0; left: -80%; width: 50%; height: 100%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.35), transparent); transform: skewX(-20deg); transition: left .6s var(--ease); }
+  .btn:hover { background: var(--clay-dark); transform: translateY(-2px); box-shadow: 0 16px 36px -12px rgba(168,73,42,.8); }
+  .btn:hover::after { left: 130%; }
+  .btn svg { transition: transform .25s var(--ease); }
+  .btn:hover svg { transform: translateX(3px); }
+  :focus-visible { outline: 3px solid var(--peach); outline-offset: 3px; border-radius: 8px; }
+
+  /* nav */
+  .nav { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: background .3s, box-shadow .3s; }
+  .nav.solid { background: rgba(15,38,34,.72); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); box-shadow: 0 1px 0 rgba(255,255,255,.06); }
+  .nav .wrap { height: 72px; display: flex; align-items: center; justify-content: space-between; }
+  .wordmark { font: 600 28px/1 var(--serif); letter-spacing: -.01em; color: var(--cream); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  .nav .btn { min-height: 44px; padding: 10px 20px; font-size: 16px; box-shadow: none; }
+  .links { display: none; }
+  @media (min-width: 900px) {
+    .links { display: flex; gap: 2px; padding: 4px; border-radius: 999px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+    .links a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; border-radius: 999px; font-size: 15px; font-weight: 500; color: var(--mint); text-decoration: none; transition: background .25s, color .25s; }
+    .links a:hover { background: rgba(255,255,255,.08); color: var(--cream); }
+  }
+
+  /* hero */
+  .hero { position: relative; overflow: hidden; background: var(--night); color: var(--cream); padding: 128px 0 88px; isolation: isolate; }
+  .aurora { position: absolute; inset: -20%; z-index: -2; filter: blur(70px); opacity: .9; }
+  .aurora i { position: absolute; border-radius: 50%; }
+  .aurora i:nth-child(1) { width: 46vw; height: 46vw; min-width: 380px; min-height: 380px; right: 4%; top: 12%; background: radial-gradient(circle, rgba(232,168,124,.24), transparent 65%); animation: drift1 22s var(--ease) infinite alternate; }
+  .aurora i:nth-child(2) { width: 52vw; height: 52vw; min-width: 420px; min-height: 420px; left: -6%; bottom: -10%; background: radial-gradient(circle, rgba(46,107,92,.75), transparent 65%); animation: drift2 26s var(--ease) infinite alternate; }
+  .aurora i:nth-child(3) { width: 30vw; height: 30vw; min-width: 260px; min-height: 260px; left: 40%; top: -6%; background: radial-gradient(circle, rgba(127,200,169,.22), transparent 65%); animation: drift1 30s var(--ease) infinite alternate-reverse; }
+  @keyframes drift1 { to { transform: translate(-8%, 10%) scale(1.12); } }
+  @keyframes drift2 { to { transform: translate(10%, -8%) scale(1.08); } }
+  .grain { position: absolute; inset: 0; z-index: -1; opacity: .07; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px); background-size: 56px 56px; background-position: center top; -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, #000 25%, transparent 75%); mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, #000 25%, transparent 75%); }
+  .hero::after { content: ""; position: absolute; left: 50%; top: -260px; width: min(1000px, 140vw); height: 520px; transform: translateX(-50%); z-index: -1; pointer-events: none; background: radial-gradient(ellipse at center, rgba(243,194,156,.16), transparent 68%); }
+  .hero .wrap { display: grid; gap: 56px; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 10px; padding: 8px 16px; border-radius: 999px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); font-size: 14px; color: var(--mint); backdrop-filter: blur(8px); }
+  .pulse { position: relative; width: 9px; height: 9px; border-radius: 50%; background: var(--green); }
+  .pulse::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--green); animation: ping 2s var(--ease) infinite; }
+  @keyframes ping { from { transform: scale(.6); opacity: .9; } to { transform: scale(1.8); opacity: 0; } }
+  .hero h1 { color: var(--cream); font-size: clamp(40px, 8.6vw, 66px); letter-spacing: -.02em; margin: 22px 0 22px; }
+  .hero h1 em { font-style: italic; font-weight: 500; background: linear-gradient(95deg, var(--apricot), var(--peach) 55%, #F6D9C2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero .lede { color: var(--mint); max-width: 560px; }
+  .cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 34px; }
+  .cta-note { font-size: 15px; color: var(--sage); }
+  .ticks { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 30px; font-size: 16px; color: var(--cream); }
+  .ticks li { display: flex; align-items: center; gap: 8px; }
+
+  /* phone stage */
+  .stage { position: relative; display: grid; place-items: center; padding: 10px 0; }
+  .phone { position: relative; width: min(330px, 86vw); border-radius: 46px; padding: 12px; background: linear-gradient(160deg, #22433B, #0B1D1A); box-shadow: 0 50px 100px -30px rgba(0,0,0,.7), inset 0 0 0 1.5px rgba(255,255,255,.08); }
+  .screen { border-radius: 36px; background: var(--cream); padding: 20px 16px 18px; min-height: 590px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+  .notch { width: 96px; height: 24px; border-radius: 20px; background: #0B1D1A; margin: -8px auto 6px; }
+  .s-top { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--soft); padding: 0 4px; }
+  .today { border-radius: 22px; padding: 16px 18px; background: linear-gradient(150deg, var(--forest-2), var(--forest)); color: var(--cream); }
+  .today small { font-size: 12.5px; color: var(--mint); display: flex; align-items: center; gap: 8px; }
+  .today small::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .today h4 { font: 600 23px/1.2 var(--serif); margin: 6px 0 2px; }
+  .today p { font-size: 12.5px; color: var(--mint); }
+  .ev { display: flex; align-items: center; gap: 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 10px 12px; font-size: 13.5px; line-height: 1.3; }
+  .ev b { color: var(--forest); font-weight: 600; display: block; }
+  .ev span { color: var(--soft); font-size: 12.5px; }
+  .ev .t { margin-left: auto; font-size: 12px; color: var(--soft); font-weight: 500; }
+  .ic { width: 34px; height: 34px; border-radius: 11px; flex: none; display: grid; place-items: center; }
+  .q { align-self: flex-end; background: var(--peach); color: var(--forest); border-radius: 16px 16px 4px 16px; padding: 9px 13px; font-size: 13.5px; font-weight: 500; }
+  .a { align-self: flex-start; background: #fff; color: var(--ink); border: 1px solid var(--line); border-radius: 16px 16px 16px 4px; padding: 10px 13px; font-size: 13.5px; line-height: 1.45; max-width: 92%; }
+  .typing { align-self: flex-start; display: inline-flex; gap: 4px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; }
+  .typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--sage); animation: bob 1s infinite; }
+  .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+  @keyframes bob { 50% { transform: translateY(-3px); opacity: .5; } }
+  /* sequence */
+  .seq { opacity: 0; transform: translateY(12px) scale(.98); animation: pop .6s var(--ease) forwards; }
+  @keyframes pop { to { opacity: 1; transform: none; } }
+  .d1 { animation-delay: .5s; } .d2 { animation-delay: 1.1s; } .d3 { animation-delay: 1.7s; } .d4 { animation-delay: 2.5s; }
+  .typing.seq { animation: pop .4s var(--ease) 3.1s forwards, vanish .2s linear 4.3s forwards; }
+  @keyframes vanish { to { opacity: 0; height: 0; padding: 0; margin: -5px 0; border-width: 0; } }
+  .d6 { animation-delay: 4.4s; }
+  /* floating glass chips */
+  .chip { position: absolute; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 18px; background: rgba(246,242,234,.14); border: 1px solid rgba(255,255,255,.2); backdrop-filter: blur(16px) saturate(150%); -webkit-backdrop-filter: blur(16px) saturate(150%); color: var(--cream); font-size: 14px; line-height: 1.3; box-shadow: 0 20px 40px -20px rgba(0,0,0,.6); opacity: 0; animation: pop .7s var(--ease) forwards, float 6s ease-in-out infinite; }
+  .chip b { display: block; font-weight: 600; }
+  .chip span { color: var(--mint); font-size: 12.5px; }
+  .device { position: relative; }
+  .device::before { content: ""; position: absolute; inset: 6% -22%; z-index: -1; pointer-events: none; background: radial-gradient(closest-side, rgba(127,200,169,.30), rgba(232,168,124,.14) 60%, transparent); filter: blur(28px); animation: breathe 8s ease-in-out infinite; }
+  @keyframes breathe { 50% { opacity: .65; transform: scale(.94); } }
+  .chip { white-space: nowrap; }
+  .chip-a { right: calc(100% - 22px); top: 15%; animation-delay: 2.2s, 3s; }
+  .chip-b { right: calc(100% - 22px); bottom: 17%; animation-delay: 5.2s, 6s; }
+  @keyframes float { 50% { transform: translateY(-8px); } }
+  .illus { margin-top: 16px; text-align: center; font-size: 13px; color: var(--sage); }
+
+  /* ticker */
+  .ticker { background: var(--forest); color: var(--mint); overflow: hidden; border-top: 1px solid rgba(255,255,255,.06); }
+  .ticker .track { display: flex; gap: 48px; width: max-content; padding: 18px 0; animation: scroll 40s linear infinite; font-size: 16px; white-space: nowrap; }
+  .ticker span { display: inline-flex; align-items: center; gap: 48px; }
+  .ticker span::after { content: "✦"; color: var(--peach); font-size: 12px; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* stats */
+  .stats { display: grid; gap: 16px; }
+  .stat { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 30px; transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+  .stat:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -30px rgba(20,48,43,.35); }
+  .stat .num { font: 600 clamp(52px, 7vw, 68px)/1 var(--serif); color: var(--forest); letter-spacing: -.02em; }
+  .stat p { margin-top: 12px; color: var(--muted); }
+  .stat small { display: block; margin-top: 14px; font-size: 13px; color: var(--soft); }
+
+  /* steps */
+  .how { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .steps { display: grid; gap: 16px; counter-reset: step; position: relative; }
+  .step { position: relative; background: var(--cream); border: 1px solid var(--line); border-radius: 24px; padding: 28px; transition: transform .35s var(--ease), border-color .35s; }
+  .step:hover { transform: translateY(-4px); border-color: var(--peach); }
+  .step .n { counter-increment: step; display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .step .n::before { content: "0" counter(step); font: 600 14px var(--sans); letter-spacing: .1em; color: var(--clay); }
+  .step .badge { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; background: var(--forest); }
+  .step p { margin-top: 8px; color: var(--muted); font-size: 17px; }
+
+  /* bento */
+  .bento { display: grid; gap: 16px; }
+  .tile { position: relative; overflow: hidden; border-radius: 28px; padding: 30px; background: var(--paper); border: 1px solid var(--line); transition: transform .35s var(--ease), box-shadow .35s var(--ease); }
+  .tile:hover { transform: translateY(-4px); box-shadow: 0 30px 60px -36px rgba(20,48,43,.45); }
+  .tile p { color: var(--muted); margin-top: 8px; font-size: 17px; }
+  .tile .icon { width: 50px; height: 50px; border-radius: 16px; display: grid; place-items: center; background: var(--blush); margin-bottom: 18px; }
+  .t-ask { background: linear-gradient(160deg, var(--forest-2), var(--night)); border: 0; color: var(--cream); }
+  .t-ask h3 { color: var(--cream); font-size: clamp(26px, 3vw, 32px); }
+  .t-ask > p { color: var(--mint); }
+  .t-ask .chat { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+  .t-ask .q, .t-ask .a { font-size: 15.5px; }
+  .t-ask small { display: block; margin-top: 16px; color: var(--sage); font-size: 13px; }
+  .t-ask::before { content: ""; position: absolute; width: 380px; height: 380px; right: -140px; top: -160px; background: radial-gradient(circle, rgba(232,168,124,.28), transparent 65%); pointer-events: none; }
+  .t-health .spark { margin-top: 18px; background: var(--cream); border: 1px solid var(--line); border-radius: 18px; padding: 14px 16px; }
+  .spark .lbl { display: flex; justify-content: space-between; font-size: 13px; color: var(--soft); }
+  .spark .lbl b { color: var(--clay); font-weight: 600; }
+  .spark svg { width: 100%; height: 70px; margin-top: 8px; }
+  .spark path.line { stroke-dasharray: 400; stroke-dashoffset: 400; transition: stroke-dashoffset 1.8s var(--ease) .3s; }
+  .in .spark path.line { stroke-dashoffset: 0; }
+  .t-homes { background: var(--sand); }
+  .t-homes { scroll-margin-top: 100px; }
+  .t-homes .go { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; min-height: 48px; padding: 10px 22px; border-radius: 999px; border: 2px solid var(--forest); color: var(--forest); font-weight: 600; text-decoration: none; transition: background .25s, color .25s; }
+  .t-homes .go:hover { background: var(--forest); color: var(--cream); }
+  .fine { font-size: 13px; color: var(--soft); margin-top: 12px; }
+
+  /* founder */
+  .founder { text-align: center; }
+  .founder blockquote { font: 500 clamp(24px, 3.4vw, 36px)/1.4 var(--serif); font-style: italic; color: var(--forest); max-width: 900px; margin: 18px auto 0; text-wrap: balance; }
+  .founder blockquote span { display: block; margin-top: 18px; font-style: normal; font-weight: 600; color: var(--clay); }
+  .founder cite { display: block; margin-top: 20px; font-style: normal; font-weight: 600; color: var(--clay); }
+
+  /* faq */
+  .faq { background: var(--paper); border-top: 1px solid var(--line); }
+  .faq .grid { display: grid; gap: 8px 48px; }
+  details { border-bottom: 1px solid var(--line); padding: 20px 0; }
+  summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; font-weight: 600; font-size: 18px; color: var(--forest); }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 24px; line-height: 1; color: var(--clay); transition: transform .3s var(--ease); }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin-top: 10px; color: var(--muted); font-size: 17px; }
+
+  /* join */
+  .join { position: relative; overflow: hidden; background: var(--night); color: var(--cream); isolation: isolate; }
+  .join::before { content: ""; position: absolute; z-index: -1; width: 900px; height: 900px; left: 50%; top: -420px; transform: translateX(-50%); background: radial-gradient(circle, rgba(232,168,124,.22), transparent 62%); }
+  .join .wrap { display: grid; gap: 40px; align-items: start; }
+  .join h2 { color: var(--cream); }
+  .join .lede { color: var(--mint); margin-top: 16px; }
+  .glass { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 28px; padding: 28px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  form { display: grid; gap: 16px; }
+  label { display: block; font-size: 15px; font-weight: 500; color: var(--cream); margin-bottom: 6px; }
+  input, select { width: 100%; min-height: 56px; padding: 14px 16px; border-radius: 14px; border: 1.5px solid rgba(197,211,205,.28); background: rgba(15,38,34,.6); color: var(--cream); font: 400 18px var(--sans); transition: border-color .2s, background .2s; }
+  input:hover, select:hover { border-color: rgba(197,211,205,.5); }
+  input:focus, select:focus { border-color: var(--peach); background: rgba(15,38,34,.85); outline: none; }
+  input::placeholder { color: var(--sage); }
+  select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--peach) 50%), linear-gradient(135deg, var(--peach) 50%, transparent 50%); background-position: calc(100% - 22px) 25px, calc(100% - 16px) 25px; background-size: 6px 6px; background-repeat: no-repeat; }
+  select option { color: var(--ink); background: #fff; }
+  .hp { position: absolute; left: -9999px; }
+  .form-note { font-size: 14px; color: var(--sage); }
+  .form-error { font-size: 15px; color: #FFD2BF; background: rgba(168,73,42,.25); border: 1px solid rgba(232,168,124,.4); border-radius: 12px; padding: 10px 14px; }
+  .form-error[hidden] { display: none; }
+  button[disabled] { opacity: .7; cursor: wait; }
+  .form-note a { color: var(--mint); display: inline-block; padding: 10px 0; }
+
+  footer { background: #0A1C19; color: var(--sage); font-size: 15px; padding: 28px 0; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 28px; justify-content: space-between; align-items: center; }
+  footer .wordmark { font-size: 22px; color: var(--cream); }
+  footer a:not(.wordmark) { color: var(--mint); display: inline-block; padding: 10px 0; }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d-1 { transition-delay: .08s; } .reveal.d-2 { transition-delay: .16s; } .reveal.d-3 { transition-delay: .24s; }
+
+  @media (min-width: 720px) {
+    body { font-size: 19px; }
+    section { padding: 112px 0; }
+    .stats { grid-template-columns: repeat(3, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .bento { grid-template-columns: repeat(2, 1fr); }
+    .t-ask { grid-column: span 2; }
+    .t-decide, .t-homes { grid-column: span 2; }
+    .faq .grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1040px) {
+    .hero { padding: 124px 0 96px; }
+    .hero .wrap { grid-template-columns: 1.1fr .9fr; }
+    .steps { grid-template-columns: repeat(4, 1fr); }
+    .steps::before { content: ""; position: absolute; left: 6%; right: 6%; top: 52px; height: 2px; background: linear-gradient(90deg, transparent, var(--peach), transparent); opacity: .5; z-index: -1; }
+    .bento { grid-template-columns: repeat(4, 1fr); grid-template-areas: "ask ask health health" "ask ask cam wear" "decide decide homes homes"; }
+    .t-ask { grid-area: ask; padding: 40px; }
+    .t-health { grid-area: health; } .t-cam { grid-area: cam; } .t-wear { grid-area: wear; }
+    .t-decide { grid-area: decide; } .t-homes { grid-area: homes; }
+    .join .wrap { grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  }
+  @media (min-width: 521px) {
+    .stage { justify-items: end; }
+    .device, .illus { margin-right: 16px; width: 330px; }
+    .phone { width: 330px; }
+  }
+  @media (min-width: 860px) and (max-width: 1039px) {
+    .stage { justify-items: center; }
+    .device, .illus { margin: 0 0 0 150px; }
+  }
+  @media (max-width: 520px) {
+    .chip { position: static; opacity: 1; animation: none; margin-top: 12px; width: 100%; white-space: normal; }
+    .chip-a { display: none; }
+    .stage { display: block; }
+    .phone { margin: 0 auto; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+    .reveal, .seq, .chip { opacity: 1 !important; transform: none !important; }
+    .typing { display: none; }
+    .ticker .track { animation: none; }
+  }
+
+  /* see the product */
+  .link3d { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 6px; color: var(--apricot); font-weight: 600; text-decoration: none; border-bottom: 1.5px solid rgba(243,194,156,.35); transition: border-color .25s, gap .25s; }
+  .link3d:hover { border-color: var(--apricot); gap: 12px; }
+  .see { background: var(--night); color: var(--cream); overflow: hidden; position: relative; isolation: isolate; }
+  .see::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(55% 60% at 70% 50%, rgba(46,107,92,.55), transparent 70%); }
+  .see .wrap { display: grid; gap: 36px; align-items: center; }
+  .see h2 { color: var(--cream); }
+  .see .lede { color: var(--mint); margin-top: 14px; }
+  .see-list { list-style: none; display: grid; gap: 10px; margin: 26px 0 30px; }
+  .see-list li { display: flex; gap: 12px; align-items: center; color: var(--cream); font-size: 17px; }
+  .see-list b { width: 30px; height: 30px; flex: none; border-radius: 50%; display: grid; place-items: center; background: rgba(243,194,156,.16); color: var(--apricot); font-size: 14px; }
+  .see-shot { position: relative; display: block; border-radius: 28px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); box-shadow: 0 40px 90px -40px rgba(0,0,0,.7); }
+  .see-shot img { display: block; width: 100%; height: auto; transition: transform .8s var(--ease); }
+  .see-shot:hover img { transform: scale(1.03); }
+  .see-shot span { position: absolute; left: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: rgba(11,29,26,.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: var(--cream); font-size: 14px; font-weight: 600; }
+  @media (min-width: 960px) { .see .wrap { grid-template-columns: .9fr 1.1fr; gap: 56px; } }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="wordmark" href="#top" aria-label="Solvere home">Solvere</a>
+    <nav class="links" aria-label="Main"><a href="product.html">Product</a><a href="#how">How it works</a><a href="#features">Features</a><a href="#care-homes">Care homes</a><a href="#faq">FAQ</a></nav>
+    <a class="btn" href="#join">Join the waitlist</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <span class="pill"><span class="pulse" aria-hidden="true"></span>Now choosing our first pilot homes</span>
+      <h1>Know they're okay.<br><em>Know help comes.</em></h1>
+      <p class="lede">Solvere looks after your mom or dad in their own home. No cameras, nothing to wear. It notices when something's wrong, answers your questions, and sends a real person to the door.</p>
+      <div class="cta-row">
+        <a class="btn" href="#join">Join the waitlist <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="link3d" href="product.html">Explore it in 3D <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <p class="cta-note" style="margin-top:12px">Free to join · 20 seconds</p>
+      <ul class="ticks">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A87C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>No cameras, ever</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A87C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Nothing to wear or charge</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E8A87C" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>A real person comes</li>
+      </ul>
+    </div>
+
+    <div class="stage" role="img" aria-label="Illustration of the Solvere family app showing Mom's day and an answered question">
+      <div class="device">
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="s-top"><span>Solvere</span><span>Mom · Today</span></div>
+          <div class="today seq"><small>All good</small><h4>Mom's okay today</h4><p>Up at 7:10 · breakfast · pills taken</p></div>
+          <div class="ev seq d1"><div class="ic" style="background:#F3DCCB"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A8492A" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22"/></svg></div><div><b>Up and about</b><span>Bedroom</span></div><span class="t">7:10</span></div>
+          <div class="ev seq d2"><div class="ic" style="background:#E6EFEA"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E6B5C" stroke-width="2.2" stroke-linecap="round"><path d="M4 11h16M6 11V7a6 6 0 0 1 12 0v4M5 11l1 9h12l1-9"/></svg></div><div><b>Breakfast</b><span>Fridge + kettle</span></div><span class="t">8:12</span></div>
+          <div class="ev seq d3"><div class="ic" style="background:#2E6B5C"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6F2EA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div><b>Pills taken</b><span>Confirmed by voice</span></div><span class="t">8:30</span></div>
+          <div class="q seq d4">Did Mom eat today?</div>
+          <div class="typing seq" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="a seq d6">Yes. Fridge opened <b>8:12 am</b>, kettle on <b>8:14 am</b>, 22 minutes in the kitchen.</div>
+        </div>
+      </div>
+      <div class="chip chip-a" aria-hidden="true"><div class="ic" style="background:rgba(232,168,124,.25)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F3C29C" stroke-width="2.2" stroke-linecap="round"><path d="M3 12h3l3-7 4 14 3-7h5"/></svg></div><div><b>Walking steady</b><span>Normal for her</span></div></div>
+      <div class="chip chip-b" aria-hidden="true"><div class="ic" style="background:#2E6B5C"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F6F2EA" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div><b>Help at the door in 4 min</b><span>You were told right away</span></div></div>
+      </div>
+      <p class="illus">Illustration of the planned app</p>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="track">
+    <span>No cameras, ever</span><span>Nothing to wear or charge</span><span>A real person comes</span><span>They decide what's shared</span><span>Answers from real data, never guesses</span><span>Built for homes and care homes</span>
+    <span>No cameras, ever</span><span>Nothing to wear or charge</span><span>A real person comes</span><span>They decide what's shared</span><span>Answers from real data, never guesses</span><span>Built for homes and care homes</span>
+  </div>
+</div>
+
+<!-- PROOF -->
+<section>
+  <div class="wrap">
+    <div class="head reveal"><p class="eyebrow">Why this matters</p><h2>The hardest moments happen when no one is there.</h2></div>
+    <div class="stats">
+      <div class="stat reveal"><p class="num"><span data-count="82">82</span>%</p><p>of falls happened when the person was alone. 30% stayed on the floor an hour or more.</p><small>BMJ, 2008 · adults aged 90+</small></div>
+      <div class="stat reveal d-1"><p class="num"><span data-count="18">18</span>%</p><p>of people with an alert pendant wear it consistently. 64% take it off to shower.</p><small>The Senior List, 2026 · 2,695 people</small></div>
+      <div class="stat reveal d-2"><p class="num"><span data-count="63">63</span>M</p><p>Americans look after a family member, most while holding down a job.</p><small>AARP, Caregiving in the US 2025</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="head reveal"><p class="eyebrow">How it works</p><h2>It notices. It asks. Help comes.</h2></div>
+    <div class="steps">
+      <div class="step reveal"><div class="n"><span class="badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8A87C" stroke-width="2" stroke-linecap="round"><path d="M3 12h3l3-7 4 14 3-7h5"/></svg></span></div><h3>Sense</h3><p>Small radar sensors notice falls, sleep and daily routines. No cameras.</p></div>
+      <div class="step reveal d-1"><div class="n"><span class="badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8A87C" stroke-width="2" stroke-linecap="round"><rect x="8" y="3" width="8" height="12" rx="4"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span></div><h3>Voice</h3><p>A friendly voice reminds, keeps company, and asks "Are you okay?"</p></div>
+      <div class="step reveal d-2"><div class="n"><span class="badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8A87C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg></span></div><h3>Ask</h3><p>A daily summary, and answers to anything you ask, from real data.</p></div>
+      <div class="step reveal d-3"><div class="n"><span class="badge"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E8A87C" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M16 14.2c2.8.2 5 2.6 5 5.8"/></svg></span></div><h3>Help</h3><p>A trained caregiver or staff member comes to the door. 911 only when needed.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEE THE PRODUCT -->
+<section class="see" id="product">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow" style="color:var(--peach)">See the product</p>
+      <h2>Turn it around. Open it up. Watch it work.</h2>
+      <p class="lede">Explore every Solvere device in 3D, click through the family app and the care-home console, and play out real moments: a fall in the bathroom at night, a sugar drop while she sleeps, a walk out the front door at 2 am.</p>
+      <ul class="see-list">
+        <li><b>1</b>Spin the hub, bath pod, bedside pod and ceiling pod in 3D</li>
+        <li><b>2</b>Try the family app and the care-home console</li>
+        <li><b>3</b>Run a scenario and make the choices</li>
+      </ul>
+      <a class="btn" href="product.html">Explore the product <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <a class="see-shot reveal d-1" href="product.html" aria-label="Explore the Solvere product in 3D">
+      <img src="img/kit.jpg" width="1600" height="920" loading="lazy" alt="The Solvere home kit: a bedside pod with a clock and HELP button, the Home hub with its big HELP button, a bath pod with a pass-through socket, and two door tags, each with the Solvere wordmark">
+      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>Open in 3D</span>
+    </a>
+  </div>
+</section>
+
+<!-- BENTO -->
+<section id="features">
+  <div class="wrap">
+    <div class="head reveal"><p class="eyebrow">Built around them</p><h2>Their home. Their rules. Help when they want it.</h2></div>
+    <div class="bento">
+      <div class="tile t-ask reveal">
+        <p class="eyebrow" style="color:var(--peach)">Ask Solvere</p>
+        <h3 style="margin-top:12px;">Stop wondering. Just ask.</h3>
+        <p>No more calling five times a day.</p>
+        <div class="chat">
+          <div class="q">How did Dad sleep last night?</div>
+          <div class="a">In bed at 10:40 pm, up at 6:55 am. Up once at 2:10 am, which is usual for him.</div>
+          <div class="q">Did Mom take her pills?</div>
+          <div class="a">Yes. She confirmed at 8:30 am when Solvere reminded her.</div>
+        </div>
+        <small>Illustrative examples of the planned app.</small>
+      </div>
+      <div class="tile t-health reveal d-1">
+        <h3>Small changes, caught early</h3>
+        <p>Solvere learns their normal (sleep, walking, meals, blood pressure) and tells you when something drifts.</p>
+        <div class="spark" aria-hidden="true">
+          <div class="lbl"><span>Walking speed · 4 weeks</span><b>Slower than usual</b></div>
+          <svg viewBox="0 0 300 70" preserveAspectRatio="none"><path d="M0 34 H300" stroke="#E4DCCD" stroke-width="2" stroke-dasharray="4 5" fill="none"/><path class="line" d="M0 30 C30 26, 55 34, 80 29 S130 27, 160 31 S205 36, 230 44 S275 55, 300 58" stroke="#A8492A" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <p class="fine">A wellness and safety service. Not a medical device.</p>
+      </div>
+      <div class="tile t-cam reveal">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A8492A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v10H3zM14 10l7-3v10l-7-3"/><path d="M2 2l20 20"/></svg></div>
+        <h3>No cameras</h3><p>Radar senses movement, not faces. Safe for bathrooms.</p>
+      </div>
+      <div class="tile t-wear reveal d-1">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A8492A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="6" width="10" height="12" rx="3"/><path d="M9 6V3h6v3M9 18v3h6v-3"/><path d="M3 3l18 18"/></svg></div>
+        <h3>Nothing to wear</h3><p>Nothing to charge or remember. It just works.</p>
+      </div>
+      <div class="tile t-decide reveal">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A8492A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>They decide what's shared</h3><p>From "I'm okay" to full detail, your parent chooses. Private conversations stay private.</p>
+      </div>
+      <div class="tile t-homes reveal d-1" id="care-homes">
+        <p class="eyebrow">For care homes</p>
+        <h3 style="margin-top:10px;">Cover more rooms. Catch problems early.</h3>
+        <p>Every room looked after without cameras, and staff sent to the right door first.</p>
+        <a class="go" href="#join" data-role="care-home">Become a pilot site <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder" style="padding-top:0;">
+  <div class="wrap reveal">
+    <p class="eyebrow">Why we're building this</p>
+    <blockquote>&ldquo;My grandmother lives with dementia and diabetes. A fall, a wrong turn, a sugar drop: any of it can happen in the few minutes no one is looking.<span>I'm building Solvere for those minutes.&rdquo;</span></blockquote>
+    <cite>Sami, founder</cite>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="head reveal"><p class="eyebrow">Questions</p><h2>Good questions to ask</h2></div>
+    <div class="grid reveal">
+      <div>
+        <details><summary>Does Solvere use cameras?</summary><p>No, never. Radar sensors detect movement and breathing, not images. Nobody can watch your parent.</p></details>
+        <details><summary>Do they need to wear or charge anything?</summary><p>No. The sensors and the home hub do the work. If your parent already wears a smartwatch, Solvere can use it too.</p></details>
+      </div>
+      <div>
+        <details><summary>Who comes when help is needed?</summary><p>Your parent is asked first. If they need help, the nearest person on their list is sent: building staff, a Solvere caregiver where we operate, or a family member you choose. Emergency services only when needed.</p></details>
+        <details><summary>Where is Solvere available?</summary><p>We're starting with a small pilot. Join from anywhere, and we'll tell you when Solvere reaches your area.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="join" id="join">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow" style="color:var(--peach)">Join the waitlist</p>
+      <h2 style="margin-top:14px;">Be first when Solvere comes to your family.</h2>
+      <p class="lede">We're choosing our first pilot homes now. It takes 20 seconds.</p>
+    </div>
+    <div class="glass reveal d-1">
+      <form id="waitlist" method="POST" action="https://formspree.io/f/xbglzbzy">
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
+        <div><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" required placeholder="First name is fine"></div>
+        <div><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com"></div>
+        <div><label for="role">I'm joining as</label>
+          <select id="role" name="role" required>
+            <option value="family">Family of an older parent</option>
+            <option value="care-home">Care home or retirement community</option>
+            <option value="older-adult">Older adult, for myself</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <button class="btn" type="submit" style="margin-top:4px;">Join the waitlist <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <p class="form-error" role="alert" hidden></p>
+        <p class="form-note">We'll only email you about Solvere. Unsubscribe anytime. <a href="/privacy.html">Privacy</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="wordmark" href="#top">Solvere</a>
+    <span>Home, looked after. · <a href="mailto:hello@trysolvere.com">hello@trysolvere.com</a> · <a href="/privacy.html">Privacy</a> · © 2026</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  function onScroll() { nav.classList.toggle('solid', window.scrollY > 24); }
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+
+  document.querySelectorAll('[data-role]').forEach(function (a) {
+    a.addEventListener('click', function () { var s = document.getElementById('role'); if (s) s.value = a.getAttribute('data-role'); });
+  });
+
+  // Waitlist: send to Formspree without leaving the page, then show thanks.html
+  var form = document.getElementById('waitlist');
+  if (form && window.fetch && window.FormData) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]'), err = form.querySelector('.form-error'), label = btn.innerHTML;
+      err.hidden = true; btn.disabled = true; btn.textContent = 'Joining…';
+      function fail(msg) { err.textContent = msg; err.hidden = false; btn.disabled = false; btn.innerHTML = label; }
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (res) { return res.json().catch(function () { return {}; }).then(function (data) { return { ok: res.ok, data: data }; }); })
+        .then(function (r) {
+          if (r.ok && !r.data.error) { window.location.href = 'thanks.html'; return; }
+          var list = r.data.errors || [];
+          var badEmail = list.some(function (x) { return x.field === 'email'; });
+          fail(badEmail ? 'Please check your email address and try again.' : 'Something went wrong. Please try again.');
+        })
+        .catch(function () { fail('Could not connect. Check your internet and try again.'); });
+    });
+  }
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || reduce) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+
+  function countUp(el) {
+    var end = +el.getAttribute('data-count'), t0 = null, dur = 1200;
+    function step(t) { if (!t0) t0 = t; var p = Math.min((t - t0) / dur, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); }
+    el.textContent = '0'; requestAnimationFrame(step);
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      en.target.querySelectorAll('[data-count]').forEach(countUp);
+      io.unobserve(en.target);
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
