@@ -4,210 +4,221 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solvere — Know they're okay.</title>
-<meta name="description" content="Solvere looks out for your mom or dad when they live alone. It notices a possible fall, asks if they're okay, and tells the family right away if they don't answer.">
+<meta name="description" content="Solvere looks out for your mom or dad when they live alone. See how their day went, and hear about a possible fall in seconds.">
 <meta property="og:title" content="Solvere — Know they're okay.">
-<meta property="og:description" content="It notices a possible fall, asks if they're okay, and tells the family right away if they don't answer.">
+<meta property="og:description" content="See how their day went, and hear about a possible fall in seconds.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://trysolvere.com/">
-<meta name="theme-color" content="#0A1A16">
+<meta name="theme-color" content="#0B1D19">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  /* Layout: dark full-bleed hero and product stage, ivory reading sections, one luminous status accent. */
   :root {
-    --night: #0A1A16; --deep: #0F241F; --deep-2: #163029; --glass: rgba(255,255,255,.05); --glass-line: rgba(255,255,255,.10);
-    --ivory: #F4F2ED; --paper: #FBFAF7; --stone: #E6E2DA; --hair: #DCD7CD;
-    --ink: #0E1A17; --muted: #55605B; --dim: #8A948F; --on-dark: #E9EFEC; --on-dark-2: #A9B8B1;
-    --signal: #8FE3B9; --dawn: #EAC39C; --alert: #F0705E;
+    --night: #0B1D19; --forest: #12302A; --forest-2: #1B3F37;
+    --ivory: #F6F4EF; --white: #FFFFFF; --stone: #EDE9E1; --line: #E2DDD3;
+    --ink: #10201C; --muted: #5B6661; --soft: #8A938F;
+    --on-dark: #EEF3F0; --on-dark-2: #A9B9B2; --dark-line: rgba(255,255,255,.12);
+    --mint: #8FE3B9; --mint-ink: #1F7A53; --dawn: #E9BE94; --alert: #D9533F;
     --serif: 'Lora', Georgia, 'Times New Roman', serif;
     --sans: 'Geist', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-    --mono: 'Geist Mono', ui-monospace, Menlo, Consolas, monospace;
-    --ease: cubic-bezier(.2,.7,.2,1);
+    --r: 20px; --ease: cubic-bezier(.2,.7,.2,1);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body { font-family: var(--sans); font-size: 17px; line-height: 1.6; color: var(--ink); background: var(--ivory); -webkit-font-smoothing: antialiased; }
   a { color: inherit; }
-  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-  h1, h2, h3 { font-weight: 500; line-height: 1.08; text-wrap: balance; letter-spacing: -.025em; }
-  h1, h2 { font-family: var(--serif); font-weight: 500; }
-  h2 { font-size: clamp(34px, 4.6vw, 54px); }
-  h3 { font-size: 20px; letter-spacing: -.01em; font-weight: 600; }
-  .kicker { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
-  .lede { font-size: clamp(17px, 1.7vw, 19px); color: var(--muted); max-width: 36em; }
-  section { padding: 120px 0; }
-  .head { display: grid; gap: 18px; margin-bottom: 56px; max-width: 760px; }
-  :focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; border-radius: 6px; }
+  img, svg { max-width: 100%; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  h1, h2 { font-family: var(--serif); font-weight: 500; line-height: 1.08; letter-spacing: -.025em; text-wrap: balance; }
+  h2 { font-size: clamp(32px, 4.4vw, 48px); }
+  h3 { font-size: 19px; font-weight: 600; line-height: 1.3; letter-spacing: -.01em; }
+  p { text-wrap: pretty; }
+  section { padding: 96px 0; }
+  .head { max-width: 640px; margin-bottom: 48px; display: grid; gap: 14px; }
+  .head.center { margin-left: auto; margin-right: auto; text-align: center; }
+  .head p { color: var(--muted); font-size: 18px; }
+  :focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; border-radius: 6px; }
 
-  .btn { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px; border-radius: 12px; border: 0; cursor: pointer; font: 500 16px/1 var(--sans); text-decoration: none; transition: transform .2s var(--ease), background .2s, opacity .2s; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 24px; border-radius: 12px; border: 0; cursor: pointer; font: 500 16px/1 var(--sans); text-decoration: none; transition: transform .2s var(--ease), background .2s; white-space: nowrap; }
   .btn:hover { transform: translateY(-1px); }
   .btn-light { background: var(--ivory); color: var(--ink); }
-  .btn-light:hover { background: #fff; }
+  .btn-light:hover { background: var(--white); }
   .btn-dark { background: var(--ink); color: var(--ivory); }
-  .btn-ghost { color: var(--on-dark); border: 1px solid var(--glass-line); background: transparent; }
-  .btn-ghost:hover { background: var(--glass); }
+  .btn-line { border: 1px solid var(--dark-line); color: var(--on-dark); background: transparent; }
 
   /* nav */
-  .nav { position: fixed; inset: 0 0 auto 0; z-index: 50; transition: background .3s, border-color .3s; border-bottom: 1px solid transparent; }
-  .nav.solid { background: rgba(10,26,22,.82); backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%); border-color: var(--glass-line); }
-  .nav .wrap { height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-  .wordmark { font: 600 26px/1 var(--serif); letter-spacing: -.015em; color: var(--on-dark); text-decoration: none; }
-  .links { display: none; gap: 30px; font-size: 14.5px; }
-  .links a { color: var(--on-dark-2); text-decoration: none; transition: color .2s; }
+  .nav { position: fixed; inset: 0 0 auto 0; z-index: 50; border-bottom: 1px solid transparent; transition: background .3s, border-color .3s; }
+  .nav.solid { background: rgba(11,29,25,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-color: var(--dark-line); }
+  .nav .wrap { height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .wordmark { font: 600 25px/1 var(--serif); letter-spacing: -.015em; color: var(--on-dark); text-decoration: none; }
+  .links { display: none; gap: 28px; font-size: 15px; }
+  .links a { color: var(--on-dark-2); text-decoration: none; }
   .links a:hover { color: var(--on-dark); }
-  .nav .btn { min-height: 40px; padding: 0 18px; font-size: 14.5px; border-radius: 10px; }
-  @media (min-width: 900px) { .links { display: flex; } }
+  .nav .btn { min-height: 40px; padding: 0 16px; font-size: 15px; border-radius: 10px; }
 
   /* hero */
-  .hero { background: var(--night); color: var(--on-dark); padding: 150px 0 0; position: relative; overflow: hidden; isolation: isolate; }
-  .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(60% 55% at 78% 40%, rgba(143,227,185,.10), transparent 70%), radial-gradient(45% 45% at 10% 100%, rgba(234,195,156,.07), transparent 70%); }
-  .hero-top { display: grid; gap: 28px; max-width: 880px; }
-  .status { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 12.5px; letter-spacing: .06em; color: var(--on-dark-2); }
-  .status i { width: 7px; height: 7px; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 4px rgba(143,227,185,.15); }
-  .hero h1 { font-size: clamp(46px, 7.4vw, 92px); letter-spacing: -.035em; color: #fff; }
+  .hero { background: var(--night); color: var(--on-dark); padding: 120px 0 0; overflow: hidden; position: relative; isolation: isolate; }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(55% 60% at 75% 70%, rgba(143,227,185,.12), transparent 70%); }
+  .hero .wrap { display: grid; gap: 48px; align-items: end; }
+  .hero-copy { padding-bottom: 8px; display: grid; gap: 22px; justify-items: start; }
+  .status { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--on-dark-2); }
+  .status i { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(143,227,185,.16); }
+  .hero h1 { font-size: clamp(44px, 7vw, 76px); color: #fff; }
   .hero h1 em { font-style: italic; color: var(--dawn); }
-  .hero .lede { color: var(--on-dark-2); font-size: clamp(18px, 1.9vw, 21px); }
+  .hero .lede { font-size: clamp(18px, 2vw, 20px); color: var(--on-dark-2); max-width: 30em; }
   .cta { display: flex; flex-wrap: wrap; gap: 12px; }
-  .stage { margin-top: 80px; display: grid; gap: 24px; align-items: end; }
-  .stage > * { min-width: 0; }
+  .hero-shot { display: grid; justify-items: center; }
 
-  /* product render (original, CSS/SVG) */
-  .render { position: relative; border-radius: 22px 22px 0 0; background: linear-gradient(180deg, var(--deep), var(--deep-2)); border: 1px solid var(--glass-line); border-bottom: 0; min-height: 420px; display: grid; place-items: center; overflow: hidden; }
-  .render::after { content: ""; position: absolute; left: 50%; bottom: 42px; width: 260px; height: 26px; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(0,0,0,.55), transparent); }
-  .render svg { position: relative; z-index: 1; width: min(300px, 70%); height: auto; }
-  .render .label { position: absolute; left: 22px; top: 20px; font-family: var(--mono); font-size: 12px; color: var(--on-dark-2); letter-spacing: .06em; }
+  /* phone */
+  .phone { width: 300px; max-width: 100%; border-radius: 44px; padding: 11px; background: linear-gradient(160deg, #2A4A42, #08130F); box-shadow: 0 40px 80px -30px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.08); }
+  .hero .phone { border-bottom-left-radius: 0; border-bottom-right-radius: 0; padding-bottom: 0; }
+  .screen { border-radius: 34px; background: var(--ivory); padding: 16px 14px 20px; display: grid; gap: 9px; align-content: start; color: var(--ink); min-height: 560px; }
+  .hero .screen { border-bottom-left-radius: 0; border-bottom-right-radius: 0; min-height: 520px; }
+  .notch { width: 92px; height: 24px; border-radius: 20px; background: #08130F; margin: -4px auto 4px; }
+  .s-top { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); padding: 0 4px; }
+  .s-top b { font-family: var(--serif); font-size: 15px; color: var(--ink); }
+  .today { border-radius: 18px; padding: 15px 16px; background: var(--forest); color: var(--on-dark); }
+  .today small { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--mint); }
+  .today small::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--mint); }
+  .today strong { display: block; font: 500 21px/1.2 var(--serif); margin: 6px 0 2px; color: #fff; }
+  .today p { font-size: 12px; color: var(--on-dark-2); }
+  .ev { display: flex; align-items: center; gap: 11px; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 9px 11px; font-size: 13px; line-height: 1.3; }
+  .ev .ic { width: 32px; height: 32px; border-radius: 10px; flex: none; display: grid; place-items: center; background: var(--stone); }
+  .ev b { display: block; font-weight: 600; }
+  .ev span { color: var(--muted); font-size: 12px; }
+  .ev .t { margin-left: auto; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .q { justify-self: end; max-width: 85%; background: var(--forest); color: #fff; border-radius: 16px 16px 4px 16px; padding: 9px 13px; font-size: 13px; }
+  .a { justify-self: start; max-width: 90%; background: var(--white); border: 1px solid var(--line); border-radius: 16px 16px 16px 4px; padding: 9px 13px; font-size: 13px; line-height: 1.45; }
+  .in { animation: rise .6s var(--ease) both; }
+  .in.d1 { animation-delay: .3s; } .in.d2 { animation-delay: .6s; } .in.d3 { animation-delay: .9s; } .in.d4 { animation-delay: 1.4s; } .in.d5 { animation-delay: 2.1s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(10px); } }
 
-  /* live decision panel */
-  .panel { border-radius: 22px 22px 0 0; background: rgba(255,255,255,.04); border: 1px solid var(--glass-line); border-bottom: 0; padding: 22px 22px 26px; backdrop-filter: blur(10px); }
-  .p-head { display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 12px; color: var(--on-dark-2); letter-spacing: .04em; }
-  .p-head span:first-child { display: inline-flex; align-items: center; gap: 8px; color: var(--on-dark); }
-  .p-head span:first-child i { width: 7px; height: 7px; border-radius: 50%; background: var(--signal); }
-  .desc { margin: 16px 0 18px; font-size: 15px; color: var(--on-dark); min-height: 3.2em; line-height: 1.5; }
-  .bars { display: grid; gap: 9px; font-variant-numeric: tabular-nums; }
-  .row { display: grid; grid-template-columns: 8.4em 1fr 2.8em; align-items: center; gap: 12px; font-size: 13.5px; color: var(--on-dark-2); }
-  .row b { font-family: var(--mono); font-weight: 400; text-align: right; font-size: 12.5px; }
-  .track { height: 4px; background: rgba(255,255,255,.08); border-radius: 4px; overflow: hidden; }
-  .fill { height: 100%; width: 0; background: rgba(255,255,255,.35); border-radius: 4px; transition: width .7s var(--ease); }
-  .row.lead { color: #fff; }
-  .row.lead .fill { background: var(--signal); }
-  .row.fall.lead { color: var(--alert); }
-  .row.fall.lead .fill { background: var(--alert); }
-  .voice { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--glass-line); display: grid; grid-template-columns: auto 1fr; gap: 12px; font-size: 14.5px; min-height: 4.6em; color: var(--on-dark); }
-  .who { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--dawn); padding-top: 3px; }
-  .caption { font-family: var(--mono); font-size: 11.5px; color: var(--dim); margin-top: 14px; }
+  /* alert screen */
+  .alert-card { border-radius: 18px; background: var(--white); border: 1px solid var(--line); overflow: hidden; }
+  .alert-top { background: var(--alert); color: #fff; padding: 12px 14px; display: grid; gap: 2px; }
+  .alert-top small { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; opacity: .9; }
+  .alert-top strong { font: 500 19px/1.25 var(--serif); }
+  .snap { background: #12201C; display: grid; place-items: center; height: 150px; }
+  .alert-body { padding: 12px 14px; display: grid; gap: 8px; font-size: 13px; }
+  .alert-body p { color: var(--muted); }
+  .acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .acts span { display: grid; place-items: center; min-height: 40px; border-radius: 10px; font-size: 13px; font-weight: 600; }
+  .acts .call { background: var(--ink); color: #fff; }
+  .acts .way { background: var(--stone); }
+  .ok { display: flex; gap: 10px; align-items: center; background: #E3F2EA; color: var(--mint-ink); border-radius: 14px; padding: 10px 12px; font-size: 13px; font-weight: 500; }
+  .phone-col { display: grid; justify-items: center; }
+  .caption { margin-top: 14px; font-size: 13px; color: var(--soft); text-align: center; }
 
-  /* strip */
-  .strip { background: var(--paper); border-bottom: 1px solid var(--hair); }
-  .strip .wrap { display: grid; grid-template-columns: repeat(2, 1fr); }
-  .strip div { padding: 26px 0; font-size: 15px; color: var(--muted); display: flex; align-items: center; gap: 12px; }
-  .strip div::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #2E7D5B; flex: none; }
+  /* value */
+  .values { display: grid; gap: 16px; }
+  .value { background: var(--white); border: 1px solid var(--line); border-radius: var(--r); padding: 28px; display: grid; gap: 10px; align-content: start; }
+  .value .ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--forest); margin-bottom: 6px; }
+  .value p { color: var(--muted); }
 
-  /* how */
-  .steps { display: grid; border-top: 1px solid var(--hair); }
-  .step { display: grid; gap: 10px; padding: 32px 0; border-bottom: 1px solid var(--hair); }
-  .step .t { font-family: var(--mono); font-size: 13px; color: var(--dim); }
-  .step h3 { font-family: var(--serif); font-weight: 500; font-size: 30px; letter-spacing: -.02em; }
-  .step p { color: var(--muted); max-width: 30em; }
+  /* moment */
+  .moment { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .moment .wrap { display: grid; gap: 48px; align-items: center; }
+  .moment .wrap > * { min-width: 0; }
+  .flow { list-style: none; display: grid; gap: 0; margin-top: 8px; }
+  .flow li { display: grid; grid-template-columns: 36px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .flow li:last-child { border-bottom: 1px solid var(--line); }
+  .flow .dot { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--stone); font-weight: 600; font-size: 14px; }
+  .flow p { color: var(--muted); margin-top: 2px; }
 
   /* products */
-  .products { background: var(--night); color: var(--on-dark); }
-  .products h2 { color: #fff; }
-  .products .lede { color: var(--on-dark-2); }
-  .products .kicker { color: var(--on-dark-2); }
-  .prod-grid { display: grid; gap: 20px; }
-  .prod { border: 1px solid var(--glass-line); border-radius: 22px; overflow: hidden; background: linear-gradient(180deg, var(--deep), var(--night)); display: grid; }
-  .prod .shot { display: grid; place-items: center; height: 300px; background: radial-gradient(60% 70% at 50% 45%, rgba(143,227,185,.08), transparent 70%); border-bottom: 1px solid var(--glass-line); }
-  .prod .shot svg { height: 70%; width: auto; }
-  .prod .body { padding: 28px; display: grid; gap: 14px; }
-  .prod .name { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .prod h3 { font-family: var(--serif); font-weight: 500; font-size: 30px; color: #fff; letter-spacing: -.02em; }
-  .price { font-family: var(--mono); font-size: 14px; color: var(--on-dark); }
-  .prod p { color: var(--on-dark-2); }
-  .specs { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-top: 6px; font-size: 14px; color: var(--on-dark); }
-  .specs li { padding-top: 10px; border-top: 1px solid var(--glass-line); }
-  .specs li span { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
-  .soon { display: inline-block; font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--dawn); }
-
-  /* privacy */
-  .priv { display: grid; gap: 20px; }
-  .priv > div { background: var(--paper); border: 1px solid var(--hair); border-radius: 20px; padding: 32px; display: grid; gap: 14px; align-content: start; }
-  .priv h3 { font-family: var(--serif); font-weight: 500; font-size: 28px; letter-spacing: -.02em; }
-  .priv ul { list-style: none; display: grid; gap: 12px; color: var(--muted); }
-  .priv li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; }
-  .priv li::before { content: ""; width: 6px; height: 6px; margin-top: .7em; border-radius: 50%; background: var(--ink); }
+  .prods { display: grid; gap: 16px; }
+  .prod { background: var(--white); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: grid; }
+  .prod .shot { height: 260px; display: grid; place-items: center; background: linear-gradient(180deg, var(--forest), var(--night)); }
+  .prod .shot svg { height: 72%; width: auto; }
+  .prod .body { padding: 26px 28px 30px; display: grid; gap: 10px; }
+  .prod .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .prod h3 { font: 500 26px/1.15 var(--serif); letter-spacing: -.02em; }
+  .prod .price { font-weight: 600; }
+  .prod .soon { font-size: 13px; font-weight: 600; color: var(--muted); background: var(--stone); padding: 4px 10px; border-radius: 999px; }
+  .prod p { color: var(--muted); }
+  .feats { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .feats li { font-size: 13.5px; padding: 6px 12px; border-radius: 999px; background: var(--ivory); border: 1px solid var(--line); }
 
   /* pricing */
-  .pricing { background: var(--paper); border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
-  .plans { display: grid; gap: 20px; }
-  .plan { border: 1px solid var(--hair); border-radius: 22px; padding: 32px; background: var(--ivory); display: grid; gap: 18px; align-content: start; }
+  .pricing { background: var(--white); border-top: 1px solid var(--line); }
+  .plans { display: grid; gap: 16px; }
+  .plan { border: 1px solid var(--line); border-radius: var(--r); padding: 28px; background: var(--ivory); display: grid; gap: 16px; align-content: start; }
   .plan.pick { background: var(--night); color: var(--on-dark); border-color: var(--night); }
-  .plan .tier { display: flex; justify-content: space-between; align-items: center; }
-  .plan .tier h3 { font-size: 18px; }
-  .badge { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 5px 10px; border-radius: 6px; background: rgba(143,227,185,.16); color: var(--signal); }
-  .amount { font-family: var(--serif); font-size: 56px; letter-spacing: -.03em; line-height: 1; }
-  .amount small { font-family: var(--sans); font-size: 15px; letter-spacing: 0; color: var(--muted); margin-left: 4px; }
+  .plan .tier { display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 28px; }
+  .tag { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(143,227,185,.18); color: var(--mint); }
+  .amount { font: 500 52px/1 var(--serif); letter-spacing: -.03em; }
+  .amount small { font: 400 15px var(--sans); letter-spacing: 0; color: var(--muted); margin-left: 4px; }
   .plan.pick .amount small, .plan.pick .for { color: var(--on-dark-2); }
-  .for { color: var(--muted); font-size: 15px; }
-  .plan ul { list-style: none; display: grid; gap: 10px; font-size: 15.5px; border-top: 1px solid var(--hair); padding-top: 18px; }
-  .plan.pick ul { border-color: var(--glass-line); }
-  .plan li { display: grid; grid-template-columns: 20px 1fr; gap: 8px; }
-  .plan li::before { content: "✓"; font-size: 13px; color: #2E7D5B; padding-top: 2px; }
-  .plan.pick li::before { color: var(--signal); }
-  .plan .btn { justify-content: center; }
-  .fine { margin-top: 28px; font-size: 14px; color: var(--muted); max-width: 52em; }
+  .for { color: var(--muted); font-size: 15px; min-height: 2.6em; }
+  .plan ul { list-style: none; display: grid; gap: 10px; font-size: 15.5px; border-top: 1px solid var(--line); padding-top: 18px; }
+  .plan.pick ul { border-color: var(--dark-line); }
+  .plan li { display: grid; grid-template-columns: 20px 1fr; gap: 6px; }
+  .plan li::before { content: "✓"; color: var(--mint-ink); font-size: 14px; }
+  .plan.pick li::before { color: var(--mint); }
+  .plan .btn { width: 100%; margin-top: 4px; }
+  .fine { margin-top: 24px; font-size: 14px; color: var(--muted); text-align: center; max-width: 46em; margin-left: auto; margin-right: auto; }
 
   /* faq */
-  .faq .grid { display: grid; gap: 0 56px; }
-  details { border-top: 1px solid var(--hair); padding: 22px 0; }
+  .faq-list { max-width: 760px; margin: 0 auto; }
+  details { border-top: 1px solid var(--line); padding: 20px 0; }
+  details:last-child { border-bottom: 1px solid var(--line); }
   summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 20px; font-weight: 500; font-size: 18px; }
   summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; font-family: var(--mono); color: var(--dim); transition: transform .3s var(--ease); }
+  summary::after { content: "+"; color: var(--soft); font-size: 22px; line-height: 1; transition: transform .3s var(--ease); }
   details[open] summary::after { transform: rotate(45deg); }
   details p { margin-top: 10px; color: var(--muted); }
 
   /* join */
   .join { background: var(--night); color: var(--on-dark); }
-  .join .wrap { display: grid; gap: 48px; align-items: center; }
+  .join .wrap { display: grid; gap: 40px; align-items: center; }
+  .join .wrap > * { min-width: 0; }
   .join h2 { color: #fff; }
-  .join .lede { color: var(--on-dark-2); margin-top: 18px; }
-  .card-form { background: var(--glass); border: 1px solid var(--glass-line); border-radius: 22px; padding: 30px; }
+  .join .sub { color: var(--on-dark-2); margin-top: 16px; font-size: 18px; }
+  .formbox { background: rgba(255,255,255,.05); border: 1px solid var(--dark-line); border-radius: var(--r); padding: 26px; }
   form { display: grid; gap: 16px; }
   label { display: block; font-size: 14px; color: var(--on-dark-2); margin-bottom: 8px; }
-  input, select { width: 100%; min-height: 52px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--glass-line); background: rgba(0,0,0,.25); color: var(--on-dark); font: 400 17px var(--sans); }
-  input:focus, select:focus { border-color: var(--signal); outline: none; }
-  input::placeholder { color: var(--dim); }
+  input, select { width: 100%; min-height: 52px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--dark-line); background: rgba(0,0,0,.25); color: var(--on-dark); font: 400 17px var(--sans); }
+  input:focus, select:focus { border-color: var(--mint); outline: none; }
+  input::placeholder { color: var(--soft); }
   select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--on-dark-2) 50%), linear-gradient(135deg, var(--on-dark-2) 50%, transparent 50%); background-position: calc(100% - 22px) 23px, calc(100% - 16px) 23px; background-size: 6px 6px; background-repeat: no-repeat; }
   select option { color: var(--ink); background: #fff; }
-  form .btn { justify-content: center; width: 100%; }
+  form .btn { width: 100%; }
   .hp { position: absolute; left: -9999px; }
-  .form-note { font-size: 13.5px; color: var(--dim); }
+  .form-note { font-size: 13.5px; color: var(--soft); }
   .form-note a { color: var(--on-dark-2); }
-  .form-error { font-size: 15px; color: #FFD2C8; background: rgba(240,112,94,.15); border: 1px solid rgba(240,112,94,.35); border-radius: 10px; padding: 10px 14px; }
+  .form-error { font-size: 15px; color: #FFD5CC; background: rgba(217,83,63,.18); border: 1px solid rgba(217,83,63,.4); border-radius: 10px; padding: 10px 14px; }
   .form-error[hidden] { display: none; }
   button[disabled] { opacity: .7; cursor: wait; }
 
-  footer { background: var(--night); border-top: 1px solid var(--glass-line); color: var(--dim); font-size: 14px; padding: 30px 0; }
-  footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: space-between; align-items: center; }
+  footer { background: var(--night); border-top: 1px solid var(--dark-line); color: var(--soft); font-size: 14px; padding: 28px 0; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; align-items: center; }
   footer .wordmark { font-size: 20px; }
   footer a:not(.wordmark) { color: var(--on-dark-2); }
 
   @media (min-width: 760px) {
-    .strip .wrap { grid-template-columns: repeat(4, 1fr); }
-    .step { grid-template-columns: 120px 1fr 1.2fr; align-items: baseline; gap: 32px; }
-    .prod-grid, .priv { grid-template-columns: 1fr 1fr; }
-    .faq .grid { grid-template-columns: 1fr 1fr; }
-    .faq .grid > div > details:last-child { border-bottom: 1px solid var(--hair); }
+    section { padding: 120px 0; }
+    .values, .prods { grid-template-columns: repeat(2, 1fr); }
+    .values { grid-template-columns: repeat(3, 1fr); }
   }
-  @media (min-width: 1000px) {
-    .stage { grid-template-columns: 1.05fr .95fr; }
+  @media (min-width: 900px) {
+    .links { display: flex; }
+    .wrap { padding: 0 32px; }
+    .hero { padding-top: 136px; }
+    .hero .wrap { grid-template-columns: 1.15fr .85fr; }
+    .hero-copy { padding-bottom: 120px; }
+    .hero-shot { justify-items: end; }
+    .moment .wrap { grid-template-columns: 1fr 1fr; gap: 72px; }
+    .moment .phone-col { justify-self: center; }
     .plans { grid-template-columns: repeat(3, 1fr); }
-    .join .wrap { grid-template-columns: 1fr 1fr; gap: 80px; }
+    .join .wrap { grid-template-columns: 1fr 1fr; gap: 72px; }
   }
-  @media (max-width: 999px) { .render { border-radius: 22px; border-bottom: 1px solid var(--glass-line); } .panel { border-radius: 22px 22px 0 0; } }
-  @media (max-width: 420px) { .row { grid-template-columns: 7.4em 1fr 2.6em; font-size: 12.5px; } .specs { grid-template-columns: 1fr; } section { padding: 88px 0; } }
-  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+  @media (max-width: 380px) {
+    .nav .btn { padding: 0 12px; font-size: 14px; }
+    .wordmark { font-size: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
 </style>
 </head>
 <body>
@@ -215,7 +226,7 @@
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="wordmark" href="#top" aria-label="Solvere home">Solvere</a>
-    <nav class="links" aria-label="Main"><a href="#how">How it works</a><a href="#products">Products</a><a href="#privacy">Privacy</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    <nav class="links" aria-label="Main"><a href="#how">How it works</a><a href="#products">Products</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
     <a class="btn btn-light" href="#join">Join the waitlist</a>
   </div>
 </header>
@@ -225,76 +236,89 @@
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <div class="hero-top">
-      <span class="status"><i aria-hidden="true"></i>Working prototype · choosing our first pilot homes</span>
-      <h1>Know they're okay. <em>Know the moment they're not.</em></h1>
-      <p class="lede">Solvere looks out for your mom or dad when they live alone. It notices a possible fall, asks if they're okay, and tells the family right away if they don't answer.</p>
+    <div class="hero-copy">
+      <span class="status"><i aria-hidden="true"></i>Now choosing our first pilot homes</span>
+      <h1>Know they're okay. <em>Even when you can't call.</em></h1>
+      <p class="lede">Solvere looks out for your mom or dad when they live alone. See how their day went at a glance, and hear about a possible fall in seconds.</p>
       <div class="cta">
         <a class="btn btn-light" href="#join">Join the waitlist</a>
-        <a class="btn btn-ghost" href="#pricing">See plans</a>
+        <a class="btn btn-line" href="#how">How it works</a>
       </div>
     </div>
 
-    <div class="stage">
-      <div class="render" aria-hidden="true">
-        <span class="label">SOLVERE CAM</span>
-        <svg viewBox="0 0 240 300" role="presentation">
-          <defs>
-            <radialGradient id="hd" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#ECEAE4"/><stop offset="1" stop-color="#BDBAB2"/></radialGradient>
-            <linearGradient id="bs" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F2F0EB"/><stop offset="1" stop-color="#C9C6BE"/></linearGradient>
-            <radialGradient id="ln" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#3B5A51"/><stop offset=".5" stop-color="#0B1915"/><stop offset="1" stop-color="#030806"/></radialGradient>
-          </defs>
-          <path d="M58 212 Q58 196 76 192 L164 192 Q182 196 182 212 L188 268 Q188 284 170 284 L70 284 Q52 284 52 268 Z" fill="url(#bs)"/>
-          <rect x="96" y="176" width="48" height="24" rx="6" fill="#D8D5CE"/>
-          <circle cx="120" cy="110" r="86" fill="url(#hd)"/>
-          <rect x="66" y="74" width="108" height="72" rx="36" fill="#0E1A17"/>
-          <circle cx="120" cy="110" r="25" fill="url(#ln)"/>
-          <circle cx="112" cy="102" r="6" fill="rgba(255,255,255,.35)"/>
-          <circle cx="152" cy="94" r="3" fill="#8FE3B9"/>
-          <text x="120" y="262" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="15" font-weight="600" fill="#55605B">Solvere</text>
-        </svg>
-      </div>
-
-      <div class="panel" role="img" aria-label="Example of Solvere deciding, second by second, that someone may have fallen, asking if they're okay, and alerting the family">
-        <div class="p-head"><span><i aria-hidden="true"></i>Living room</span><span id="clock">14:02:07</span></div>
-        <p class="desc" id="desc">Fast drop in 0.6 seconds. Now lying on the floor.</p>
-        <div class="bars" id="bars"></div>
-        <div class="voice"><span class="who" id="who">SOLVERE</span><span id="say">“Are you okay? Have you fallen? Please say whether you need help.”</span></div>
-        <p class="caption">Illustration based on our working prototype</p>
+    <div class="hero-shot" role="img" aria-label="Illustration of the Solvere family app showing that Mom is okay today, her morning, and an answered question">
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="s-top"><b>Solvere</b><span>Mom · Today</span></div>
+          <div class="today in"><small>All good</small><strong>Mom's okay today</strong><p>Up at 7:10 · breakfast · out for a walk</p></div>
+          <div class="ev in d1"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#12302A" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22"/></svg></span><div><b>Up and about</b><span>Living room</span></div><span class="t">7:10</span></div>
+          <div class="ev in d2"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#12302A" stroke-width="2.2" stroke-linecap="round"><path d="M4 11h16M6 11V7a6 6 0 0 1 12 0v4M5 11l1 9h12l1-9"/></svg></span><div><b>Breakfast</b><span>Kitchen</span></div><span class="t">8:12</span></div>
+          <div class="ev in d3"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#12302A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 4a1.5 1.5 0 1 0 0 .01M10 21l2-6 3 3v3M8 12l2-4h4l2 4"/></svg></span><div><b>Out for a walk</b><span>Back at 10:05</span></div><span class="t">9:20</span></div>
+          <div class="q in d4">Did Mom eat lunch?</div>
+          <div class="a in d5">Yes. She was in the kitchen from 1:05 to 1:30 pm, then rested in the living room.</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="strip">
-  <div class="wrap">
-    <div>Checks every second</div>
-    <div>Asks before it alarms anyone</div>
-    <div>No camera in private rooms</div>
-    <div>Nothing to wear</div>
-  </div>
-</div>
-
-<!-- HOW -->
+<!-- VALUE -->
 <section id="how">
   <div class="wrap">
-    <div class="head"><p class="kicker">How it works</p><h2>It notices. It asks. It tells you.</h2></div>
-    <div class="steps">
-      <div class="step"><span class="t">Every second</span><h3>Notices</h3><p>Solvere works out whether your parent is standing, sitting, walking, resting, or may have fallen.</p></div>
-      <div class="step"><span class="t">Within seconds</span><h3>Asks</h3><p>After a possible fall it asks out loud, “Are you okay?” If they say they're fine, nobody gets a scare.</p></div>
-      <div class="step"><span class="t">If no answer</span><h3>Tells you</h3><p>The family gets a message straight away: what happened, when, and why Solvere thinks it was a fall.</p></div>
+    <div class="head center"><h2>Peace of mind, without the phone calls.</h2><p>Solvere works quietly in the background. You only hear from it when it matters.</p></div>
+    <div class="values">
+      <div class="value"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8FE3B9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><h3>Know their day went fine</h3><p>A quick look tells you they're up, they've eaten, and they're moving around as usual.</p></div>
+      <div class="value"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8FE3B9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg></span><h3>Hear about a fall in seconds</h3><p>Solvere asks if they're okay first. If they don't answer, you get a message straight away.</p></div>
+      <div class="value"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8FE3B9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="6" width="10" height="12" rx="3"/><path d="M3 3l18 18"/></svg></span><h3>Nothing to wear or press</h3><p>No pendant to forget, no button to reach. Bedrooms and bathrooms stay camera-free.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHEN IT MATTERS -->
+<section class="moment">
+  <div class="wrap">
+    <div>
+      <div class="head" style="margin-bottom:28px"><h2>When something happens, you'll know.</h2><p>Here's what happens after a possible fall.</p></div>
+      <ol class="flow">
+        <li><span class="dot">1</span><div><h3>It notices</h3><p>Solvere sees a sudden fall to the floor in the living room.</p></div></li>
+        <li><span class="dot">2</span><div><h3>It asks</h3><p>“Are you okay?” If Mom says she's fine, nobody gets a scare.</p></div></li>
+        <li><span class="dot">3</span><div><h3>It tells you</h3><p>No answer? You get an alert with what happened, when, and a stick-figure picture. Never a photo of her.</p></div></li>
+      </ol>
+    </div>
+    <div class="phone-col" role="img" aria-label="Illustration of a Solvere alert: possible fall in the living room, no answer to the voice check, with Call Mom and I'm on my way buttons">
+      <div class="phone">
+        <div class="screen">
+          <div class="notch"></div>
+          <div class="s-top"><b>Solvere</b><span>2:02 pm</span></div>
+          <div class="alert-card">
+            <div class="alert-top"><small>Possible fall</small><strong>Mom may have fallen in the living room</strong></div>
+            <div class="snap" aria-hidden="true">
+              <svg width="200" height="110" viewBox="0 0 200 110"><line x1="10" y1="96" x2="190" y2="96" stroke="#2F4A43" stroke-width="2"/><circle cx="52" cy="80" r="9" fill="none" stroke="#8FE3B9" stroke-width="3"/><path d="M61 82 L120 86 M120 86 L160 76 M120 86 L162 94 M84 84 L96 66 M84 84 L104 96" fill="none" stroke="#8FE3B9" stroke-width="3" stroke-linecap="round"/></svg>
+            </div>
+            <div class="alert-body"><p>Solvere asked “Are you okay?” and heard no answer after 15 seconds.</p><div class="acts"><span class="call">Call Mom</span><span class="way">I'm on my way</span></div></div>
+          </div>
+          <div class="ok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>2:04 pm · Mom got back up and said she's okay.</div>
+        </div>
+      </div>
+      <p class="caption">Illustration of the Solvere app</p>
     </div>
   </div>
 </section>
 
 <!-- PRODUCTS -->
-<section class="products" id="products">
+<section id="products">
   <div class="wrap">
-    <div class="head"><p class="kicker">Products</p><h2>Two small devices. One calm home.</h2><p class="lede">A camera for the rooms they share with you, and a sensor for the rooms that stay private.</p></div>
-    <div class="prod-grid">
+    <div class="head center"><h2>Two small devices. That's it.</h2><p>Plug them in, connect to Wi-Fi, and Solvere starts looking out for them.</p></div>
+    <div class="prods">
       <article class="prod">
         <div class="shot" aria-hidden="true">
           <svg viewBox="0 0 240 300">
+            <defs>
+              <radialGradient id="hd" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#ECEAE4"/><stop offset="1" stop-color="#BDBAB2"/></radialGradient>
+              <linearGradient id="bs" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F2F0EB"/><stop offset="1" stop-color="#C9C6BE"/></linearGradient>
+              <radialGradient id="ln" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#3B5A51"/><stop offset=".5" stop-color="#0B1915"/><stop offset="1" stop-color="#030806"/></radialGradient>
+            </defs>
             <path d="M58 212 Q58 196 76 192 L164 192 Q182 196 182 212 L188 268 Q188 284 170 284 L70 284 Q52 284 52 268 Z" fill="url(#bs)"/>
             <rect x="96" y="176" width="48" height="24" rx="6" fill="#D8D5CE"/>
             <circle cx="120" cy="110" r="86" fill="url(#hd)"/>
@@ -302,17 +326,13 @@
             <circle cx="120" cy="110" r="25" fill="url(#ln)"/>
             <circle cx="112" cy="102" r="6" fill="rgba(255,255,255,.35)"/>
             <circle cx="152" cy="94" r="3" fill="#8FE3B9"/>
+            <text x="120" y="262" text-anchor="middle" font-family="Lora, Georgia, serif" font-size="15" font-weight="600" fill="#55605B">Solvere</text>
           </svg>
         </div>
         <div class="body">
-          <div class="name"><h3>Solvere Cam</h3><span class="price">$20</span></div>
-          <p>For the living room or kitchen. It watches over shared spaces, talks and listens for the voice check, and can show a stick figure in place of video.</p>
-          <ul class="specs">
-            <li><span>Video</span>3MP, night vision</li>
-            <li><span>View</span>Pan and tilt, whole room</li>
-            <li><span>Voice</span>Speaker and microphone</li>
-            <li><span>Privacy</span>Stick-figure mode</li>
-          </ul>
+          <div class="top"><h3>Solvere Cam</h3><span class="price">$20</span></div>
+          <p>For the living room or kitchen. Spots falls, talks and listens for the “Are you okay?” check.</p>
+          <ul class="feats"><li>Night vision</li><li>Speaker and mic</li><li>Turns to see the room</li><li>Stick-figure mode</li></ul>
         </div>
       </article>
       <article class="prod">
@@ -326,27 +346,11 @@
           </svg>
         </div>
         <div class="body">
-          <div class="name"><h3>Solvere Sense</h3><span class="soon">Coming soon</span></div>
-          <p>For the bedroom and bathroom. No camera at all. Small radar and motion sensors notice movement and stillness, so private rooms stay private.</p>
-          <ul class="specs">
-            <li><span>Senses</span>Movement and stillness</li>
-            <li><span>Camera</span>None, ever</li>
-            <li><span>Rooms</span>Bedroom, bathroom</li>
-            <li><span>Setup</span>Plugs into the wall</li>
-          </ul>
+          <div class="top"><h3>Solvere Sense</h3><span class="soon">Coming soon</span></div>
+          <p>For the bedroom and bathroom. No camera at all. Notices movement and when someone stops moving for too long.</p>
+          <ul class="feats"><li>No camera</li><li>Works in the dark</li><li>Plugs into the wall</li></ul>
         </div>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- PRIVACY -->
-<section id="privacy">
-  <div class="wrap">
-    <div class="head"><p class="kicker">Privacy</p><h2>Their home. Their rules.</h2><p class="lede">Your parent decides where Solvere can look. Private rooms stay private.</p></div>
-    <div class="priv">
-      <div><p class="kicker">Living room · kitchen</p><h3>A camera, only with their yes</h3><ul><li>Only in shared rooms your parent agrees to.</li><li>Stick-figure mode shows body position, not their face.</li><li>Body position is read on a device in the home, so most of what Solvere needs never leaves the room.</li></ul></div>
-      <div><p class="kicker">Bedroom · bathroom</p><h3>No camera, ever</h3><ul><li>Radar and motion sensors instead of video.</li><li>Notices when someone stops moving for too long.</li><li>Nothing in these rooms can show an image of a person.</li></ul></div>
     </div>
   </div>
 </section>
@@ -354,49 +358,44 @@
 <!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="wrap">
-    <div class="head"><p class="kicker">Pricing</p><h2>Simple plans. Cancel anytime.</h2><p class="lede">Planned pricing at launch. Joining the waitlist is free.</p></div>
+    <div class="head center"><h2>Simple plans.</h2><p>Planned pricing at launch. Joining the waitlist is free.</p></div>
     <div class="plans">
       <div class="plan">
         <div class="tier"><h3>Basic</h3></div>
         <p class="amount">$0<small>/ month</small></p>
         <p class="for">Check in yourself, whenever you like.</p>
-        <ul><li>Live view of shared rooms</li><li>Stick-figure privacy mode</li><li>Talk through the camera</li></ul>
+        <ul><li>Live view of shared rooms</li><li>Stick-figure privacy mode</li><li>Talk through the Cam</li></ul>
         <a class="btn btn-dark" href="#join">Join the waitlist</a>
       </div>
       <div class="plan pick">
-        <div class="tier"><h3>Safety</h3><span class="badge">Most families</span></div>
+        <div class="tier"><h3>Safety</h3><span class="tag">Most popular</span></div>
         <p class="amount">$49<small>/ month</small></p>
-        <p class="for">Solvere watches out, day and night.</p>
-        <ul><li>Everything in Basic</li><li>Possible-fall alerts</li><li>“Are you okay?” voice check</li><li>Family alerts with the reason</li><li>Daily voice check-ins</li></ul>
+        <p class="for">Solvere looks out for them, day and night.</p>
+        <ul><li>Everything in Basic</li><li>Possible-fall alerts</li><li>“Are you okay?” voice check</li><li>Daily voice check-ins</li></ul>
         <a class="btn btn-light" href="#join">Join the waitlist</a>
       </div>
       <div class="plan">
         <div class="tier"><h3>Complete</h3></div>
         <p class="amount">$100<small>/ month</small></p>
         <p class="for">The full picture of how they're doing.</p>
-        <ul><li>Everything in Safety</li><li>Daily summary for the family</li><li>Alerts when routines change</li><li>Ask Solvere about their day</li></ul>
+        <ul><li>Everything in Safety</li><li>Daily summary of their day</li><li>Alerts when routines change</li><li>Ask Solvere anything about their day</li></ul>
         <a class="btn btn-dark" href="#join">Join the waitlist</a>
       </div>
     </div>
-    <p class="fine">Plans need a Solvere Cam ($20, one-time). Prices are in US dollars and may change before launch. Solvere is a safety and wellbeing service, not a medical device or an emergency service.</p>
+    <p class="fine">Plans need one Solvere Cam ($20, one-time). Prices in US dollars, subject to change before launch. Solvere is a safety and wellbeing service, not a medical device or an emergency service.</p>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq" id="faq">
+<section id="faq">
   <div class="wrap">
-    <div class="head"><p class="kicker">Questions</p><h2>Good questions to ask</h2></div>
-    <div class="grid">
-      <div>
-        <details><summary>Does Solvere use cameras?</summary><p>Only in shared rooms your parent agrees to, like the living room. Never in bedrooms or bathrooms. There, Solvere Sense uses radar and motion sensors with no image at all.</p></details>
-        <details><summary>What happens after a possible fall?</summary><p>Solvere asks your parent out loud if they're okay. If they say they're fine, that's the end of it. If there's no answer, the family gets a message with what happened, the time and the reason.</p></details>
-        <details><summary>Do they need to wear or charge anything?</summary><p>No. Nothing to wear, nothing to remember, no button to press.</p></details>
-      </div>
-      <div>
-        <details><summary>Is Solvere available now?</summary><p>Not yet. We have a working prototype and are choosing our first pilot homes. Join the waitlist and we'll be in touch.</p></details>
-        <details><summary>Where will Solvere be available?</summary><p>We're starting with a small pilot. Join from anywhere, and we'll tell you when Solvere reaches your area.</p></details>
-        <details><summary>Is it for care homes too?</summary><p>Yes. Choose “Care home” when you join and we'll talk about a pilot for your residents.</p></details>
-      </div>
+    <div class="head center"><h2>Questions</h2></div>
+    <div class="faq-list">
+      <details><summary>Is there a camera in every room?</summary><p>No. The Cam goes only in shared rooms your parent agrees to, like the living room. Bedrooms and bathrooms use Solvere Sense, which has no camera at all.</p></details>
+      <details><summary>What happens if they fall?</summary><p>Solvere asks them out loud if they're okay. If they say they're fine, that's it. If there's no answer, you get an alert straight away with what happened and when.</p></details>
+      <details><summary>Do they need to wear or charge anything?</summary><p>No. Nothing to wear, nothing to remember, no button to press.</p></details>
+      <details><summary>Can I buy Solvere today?</summary><p>Not yet. We have a working prototype and are choosing our first pilot homes. Join the waitlist and we'll be in touch.</p></details>
+      <details><summary>Is it for care homes too?</summary><p>Yes. Choose “Care home” when you join and we'll talk about a pilot.</p></details>
     </div>
   </div>
 </section>
@@ -405,11 +404,10 @@
 <section class="join" id="join">
   <div class="wrap">
     <div>
-      <p class="kicker" style="color:var(--on-dark-2)">Join the waitlist</p>
-      <h2 style="margin-top:16px;">Be first when Solvere comes to your family.</h2>
-      <p class="lede">We're choosing our first pilot homes now. It takes 20 seconds.</p>
+      <h2>Be first when Solvere comes to your family.</h2>
+      <p class="sub">We're choosing our first pilot homes now. It takes 20 seconds.</p>
     </div>
-    <div class="card-form">
+    <div class="formbox">
       <form id="waitlist" method="POST" action="https://formspree.io/f/xbglzbzy">
         <p class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></p>
         <div><label for="name">Your name</label><input id="name" name="name" type="text" autocomplete="name" required placeholder="First name is fine"></div>
@@ -424,7 +422,7 @@
         </div>
         <button class="btn btn-light" type="submit">Join the waitlist</button>
         <p class="form-error" role="alert" hidden></p>
-        <p class="form-note">We'll only email you about Solvere. Unsubscribe anytime. <a href="/privacy.html">Privacy</a></p>
+        <p class="form-note">We'll only email you about Solvere. <a href="/privacy.html">Privacy</a></p>
       </form>
     </div>
   </div>
@@ -444,40 +442,6 @@
   var nav = document.getElementById('nav');
   function onScroll() { nav.classList.toggle('solid', window.scrollY > 24); }
   onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
-
-  var STATES = ['Standing', 'Sitting', 'Walking', 'Using an object', 'Lying / resting', 'No person', 'Unclear', 'Possible fall'];
-  var SCRIPT = [
-    { t: '14:01:52', d: 'Upright and steady. Walking toward the kitchen.', p: [8, 2, 82, 4, 0, 0, 3, 1], w: '', s: '' },
-    { t: '14:01:58', d: 'Standing, hands at chest height, holding a cup.', p: [14, 3, 6, 71, 0, 0, 5, 1], w: '', s: '' },
-    { t: '14:02:05', d: 'Hips dropping fast. Body tilting forward.', p: [22, 10, 8, 4, 6, 0, 18, 32], w: '', s: '' },
-    { t: '14:02:07', d: 'Fast drop in 0.6 seconds. Now lying on the floor.', p: [1, 2, 0, 1, 9, 0, 4, 83], w: 'SOLVERE', s: '“Are you okay? Have you fallen? Please say whether you need help.”' },
-    { t: '14:02:24', d: 'Still on the floor. No movement for 17 seconds. No answer.', p: [0, 1, 0, 0, 12, 0, 3, 84], w: 'SOLVERE', s: '“I haven\'t heard a response. I\'m letting your family know now.”' },
-    { t: '14:02:25', d: 'Family alerted: possible fall in the living room, no answer to the voice check.', p: [0, 1, 0, 0, 12, 0, 3, 84], w: 'FAMILY', s: 'Message sent with the time and the reason.' },
-    { t: '14:02:51', d: 'Getting up. Upright and steady again.', p: [86, 5, 3, 1, 1, 0, 3, 1], w: 'SOLVERE', s: '“I noticed you got back up and appear to be okay.”' }
-  ];
-  var bars = document.getElementById('bars');
-  STATES.forEach(function (n, i) {
-    var r = document.createElement('div'); r.className = 'row' + (i === 7 ? ' fall' : '');
-    r.innerHTML = '<span>' + n + '</span><div class="track"><div class="fill"></div></div><b>0%</b>';
-    bars.appendChild(r);
-  });
-  var rows = bars.children;
-  function show(k) {
-    var f = SCRIPT[k], max = Math.max.apply(null, f.p);
-    document.getElementById('clock').textContent = f.t;
-    document.getElementById('desc').textContent = f.d;
-    for (var i = 0; i < rows.length; i++) {
-      rows[i].querySelector('.fill').style.width = f.p[i] + '%';
-      rows[i].querySelector('b').textContent = f.p[i] + '%';
-      rows[i].classList.toggle('lead', f.p[i] === max);
-    }
-    document.getElementById('who').textContent = f.w || 'SOLVERE';
-    document.getElementById('say').textContent = f.s || 'Listening quietly.';
-  }
-  show(3);
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var k = 3; setInterval(function () { k = (k + 1) % SCRIPT.length; show(k); }, 2600);
-  }
 
   var form = document.getElementById('waitlist');
   if (form && window.fetch && window.FormData) {
