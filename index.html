@@ -102,7 +102,7 @@
   .strip { background: var(--paper); border-bottom: 1px solid var(--hair); }
   .strip .wrap { display: grid; grid-template-columns: repeat(2, 1fr); }
   .strip div { padding: 26px 0; font-size: 15px; color: var(--muted); display: flex; align-items: center; gap: 12px; }
-  .strip b { font-family: var(--mono); font-weight: 500; font-size: 13px; color: var(--ink); }
+  .strip div::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #2E7D5B; flex: none; }
 
   /* how */
   .steps { display: grid; border-top: 1px solid var(--hair); }
